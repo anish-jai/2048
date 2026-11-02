@@ -1,3 +1,21 @@
+// What each tile value looks like, from smallest to biggest
+var FOOD_CHAIN = [
+  { value: 2,    name: "Crumb",            icon: "crumb" },
+  { value: 4,    name: "Cookie",           icon: "cookie" },
+  { value: 8,    name: "Donut",            icon: "doughnut" },
+  { value: 16,   name: "Cupcake",          icon: "cupcake" },
+  { value: 32,   name: "Cake",             icon: "cake" },
+  { value: 64,   name: "Bakery",           icon: "bakery" },
+  { value: 128,  name: "Food Truck",       icon: "truck" },
+  { value: 256,  name: "Food Chain",       icon: "chain" },
+  { value: 512,  name: "Food City",        icon: "city" },
+  { value: 1024, name: "Food Planet",      icon: "planet" },
+  { value: 2048, name: "World Domination", icon: "crown" }
+];
+
+// Tiles past 2048 all share this look
+var FOOD_CHAIN_SUPER = { name: "Galactic Snacks", icon: "ufo" };
+
 function HTMLActuator() {
   this.tileContainer    = document.querySelector(".tile-container");
   this.scoreContainer   = document.querySelector(".score-container");
@@ -5,6 +23,8 @@ function HTMLActuator() {
   this.messageContainer = document.querySelector(".game-message");
 
   this.score = 0;
+
+  this.renderLegend();
 }
 
 HTMLActuator.prototype.actuate = function (grid, metadata) {
@@ -62,7 +82,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   this.applyClasses(wrapper, classes);
 
   inner.classList.add("tile-inner");
-  inner.textContent = tile.value;
+  this.fillTile(inner, tile.value);
 
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
@@ -88,6 +108,51 @@ HTMLActuator.prototype.addTile = function (tile) {
 
   // Put the tile on the board
   this.tileContainer.appendChild(wrapper);
+};
+
+HTMLActuator.prototype.foodFor = function (value) {
+  var food = FOOD_CHAIN_SUPER;
+
+  FOOD_CHAIN.forEach(function (step) {
+    if (step.value === value) food = step;
+  });
+
+  return food;
+};
+
+HTMLActuator.prototype.createIcon = function (food) {
+  var icon = document.createElement("img");
+  icon.src = "style/icons/" + food.icon + ".png";
+  icon.alt = "";
+  return icon;
+};
+
+HTMLActuator.prototype.fillTile = function (inner, value) {
+  var food  = this.foodFor(value);
+  var icon  = this.createIcon(food);
+  var label = document.createElement("span");
+
+  icon.classList.add("tile-icon");
+  label.classList.add("tile-label");
+  label.textContent = food.name;
+
+  inner.appendChild(icon);
+  inner.appendChild(label);
+};
+
+// Show the whole chain under the board. This also loads every icon up front,
+// so that a new tile never appears without its picture.
+HTMLActuator.prototype.renderLegend = function () {
+  var self   = this;
+  var legend = document.querySelector(".food-chain-legend");
+
+  FOOD_CHAIN.forEach(function (food) {
+    var step = document.createElement("div");
+    step.classList.add("food-chain-step");
+    step.appendChild(self.createIcon(food));
+    step.appendChild(document.createTextNode(food.name));
+    legend.appendChild(step);
+  });
 };
 
 HTMLActuator.prototype.applyClasses = function (element, classes) {
@@ -126,7 +191,7 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "You win!" : "Game over!";
+  var message = won ? "World domination!" : "Out of snacks!";
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;

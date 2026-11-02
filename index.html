@@ -2,10 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>2048</title>
+  <title>Food Chain 2048</title>
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet" type="text/css">
+  <link href="style/theme.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" type="image/png" href="style/icons/cookie.png">
   <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
   <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone 5+ -->
   <link rel="apple-touch-startup-image" href="meta/apple-touch-startup-image-640x920.png"  media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)"> <!-- iPhone, retina -->
@@ -19,7 +21,7 @@
 <body>
   <div class="container">
     <div class="heading">
-      <h1 class="title">2048</h1>
+      <h1 class="title">Food Chain</h1>
       <div class="scores-container">
         <div class="score-container">0</div>
         <div class="best-container">0</div>
@@ -27,7 +29,7 @@
     </div>
 
     <div class="above-game">
-      <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+      <p class="game-intro">Grow from a crumb to <strong>world domination!</strong></p>
       <a class="restart-button">New Game</a>
     </div>
 
@@ -35,7 +37,7 @@
       <div class="game-message">
         <p></p>
         <div class="lower">
-	        <a class="keep-playing-button">Keep going</a>
+	        <a class="keep-playing-button">Keep munching</a>
           <a class="retry-button">Try again</a>
         </div>
       </div>
@@ -72,12 +74,14 @@
       </div>
     </div>
 
+    <div class="food-chain-legend"></div>
+
     <p class="game-explanation">
-      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two matching tiles touch, they <strong>merge into the next food up the chain!</strong>
     </p>
     <hr>
     <p>
-    <strong class="important">Note:</strong> This site is the official version of 2048. You can play it on your phone via <a href="http://git.io/2048">http://git.io/2048.</a> All other apps or sites are derivatives or fakes, and should be used with caution.
+    <strong class="important">Note:</strong> This is a themed fork of 2048 made for CMU 17-313. Icons are <a href="https://github.com/microsoft/fluentui-emoji" target="_blank">Fluent Emoji by Microsoft</a> (MIT).
     </p>
     <hr>
     <p>

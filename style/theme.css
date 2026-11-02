@@ -1,0 +1,130 @@
+/* Food Chain theme: loaded after main.css and overrides its colors and tiles. */
+html, body {
+  background-color: #fff6e9;
+  background-image: radial-gradient(#f8dfc2 2px, transparent 2px);
+  background-size: 26px 26px;
+  color: #5b3a29;
+  font-family: "Fredoka", "Helvetica Neue", Arial, sans-serif; }
+
+h1.title {
+  font-size: 52px;
+  line-height: 1.1;
+  margin-top: 14px;
+  color: #d9486e; }
+
+a, .game-explanation strong, .game-intro strong {
+  color: #5b3a29; }
+
+hr {
+  border-bottom-color: #e8cdb0; }
+
+.score-container, .best-container, .restart-button,
+.game-container .game-message a {
+  background: #8a5a3c;
+  color: #fff6e9;
+  border-radius: 10px; }
+
+.score-container:after, .best-container:after {
+  color: #ffe4c4; }
+
+.score-container .score-addition, .best-container .score-addition {
+  color: #d9486e; }
+
+.game-container {
+  background: #d9a679;
+  border-radius: 16px; }
+
+.grid-cell {
+  background: rgba(255, 246, 233, 0.4);
+  border-radius: 12px; }
+
+.game-container .game-message {
+  background: rgba(255, 246, 233, 0.8);
+  border-radius: 16px; }
+
+.game-container .game-message p {
+  font-size: 44px;
+  color: #5b3a29; }
+
+.game-container .game-message.game-won {
+  background: rgba(255, 201, 60, 0.75);
+  color: #5b3a29; }
+
+/* Tiles: a picture above a label */
+.tile .tile-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 4px;
+  border-radius: 12px;
+  line-height: 1;
+  color: #5b3a29; }
+
+.tile-icon {
+  width: 62%;
+  min-height: 0;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none; }
+
+.tile-label {
+  margin-top: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.05;
+  text-align: center; }
+
+.tile.tile-2 .tile-inner    { background: #fff4e0; color: #5b3a29; box-shadow: none; }
+.tile.tile-4 .tile-inner    { background: #ffe4c4; color: #5b3a29; box-shadow: none; }
+.tile.tile-8 .tile-inner    { background: #ffd6e0; color: #5b3a29; box-shadow: none; }
+.tile.tile-16 .tile-inner   { background: #ffc2d1; color: #5b3a29; box-shadow: none; }
+.tile.tile-32 .tile-inner   { background: #e9d5ff; color: #5b3a29; box-shadow: none; }
+.tile.tile-64 .tile-inner   { background: #cdeac0; color: #5b3a29; box-shadow: none; }
+.tile.tile-128 .tile-inner  { background: #bde0fe; color: #5b3a29; box-shadow: none; }
+.tile.tile-256 .tile-inner  { background: #a7c7ff; color: #5b3a29; box-shadow: none; }
+.tile.tile-512 .tile-inner  { background: #ffe28a; color: #5b3a29; box-shadow: 0 0 18px 2px rgba(255, 201, 60, 0.45); }
+.tile.tile-1024 .tile-inner { background: #ffd04f; color: #5b3a29; box-shadow: 0 0 24px 4px rgba(255, 201, 60, 0.6); }
+.tile.tile-2048 .tile-inner { background: #ffbe0b; color: #5b3a29; box-shadow: 0 0 32px 8px rgba(255, 190, 11, 0.75); }
+.tile.tile-super .tile-inner { background: #3c2a57; color: #fff6e9; box-shadow: 0 0 32px 8px rgba(124, 92, 191, 0.6); }
+
+/* The whole chain, shown under the board */
+.food-chain-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 24px 0 20px; }
+
+.food-chain-step {
+  width: 80px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.1;
+  text-align: center; }
+
+.food-chain-step img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 3px; }
+
+@media screen and (max-width: 520px) {
+  h1.title {
+    font-size: 24px;
+    margin-top: 14px; }
+
+  .tile .tile-inner {
+    padding: 2px;
+    border-radius: 8px; }
+
+  .tile-label {
+    margin-top: 1px;
+    font-size: 9px; }
+
+  .grid-cell {
+    border-radius: 8px; }
+
+  .food-chain-step {
+    width: 70px; } }
